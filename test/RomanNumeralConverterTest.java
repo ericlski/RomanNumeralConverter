@@ -43,4 +43,25 @@ class RomanNumeralConverterTest {
         result = converter.r2i("XL");
         assertEquals(40, result);
     }
+
+    @Test
+    public void trickyTest() {
+        try {
+            converter.r2i("testyboi");
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalArgumentException);
+        }
+        // more difficult
+        try {
+            converter.r2i("XVIImesswiththetestyboi");
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalArgumentException);
+        }
+        // lowercase numeral
+        try {
+            converter.r2i("xvii");
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalArgumentException);
+        }
+    }
 }
