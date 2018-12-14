@@ -34,6 +34,13 @@ class RomanNumeralConverterTest {
         assertEquals(9, result);
         result = converter.r2i("XLIX");
         assertEquals(49, result);
-
+        result = converter.r2i("CM");
+        assertEquals(900, result);
+        result = converter.r2i("CD");
+        assertEquals(400, result);
+        result = converter.r2i("XC");
+        assertEquals(90, result);
+        result = converter.r2i("XL");
+        assertEquals(40, result);
     }
 }
