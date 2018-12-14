@@ -96,4 +96,34 @@ class RomanNumeralConverterTest {
         assertNotNull(exception);
         assertTrue(exception instanceof IllegalArgumentException);
     }
+
+    @Test
+    void illegalDoubles () {
+        Exception exception = null;
+        try {
+            RomanNumeralConverter.r2i("VV");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("LL");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("DD");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+    }
 }
