@@ -18,7 +18,7 @@ public class RomanNumeralConverter {
      * @throws IllegalArgumentException when roman argument cannot be
      *                                  converted per the contract
      */
-    public static int r2i(String roman) throws IllegalArgumentException {
+    static int r2i(String roman) throws IllegalArgumentException {
         int result = 0;
         char previousChar = 0;
         // Conversion code
@@ -46,12 +46,18 @@ public class RomanNumeralConverter {
                         // need to remove twenty as ten was already added to result in the previous run thru the loop
                         result -= 20;
                     }
+                    else if (previousChar == 'I') {
+                        throw new IllegalArgumentException("'I' can't come before 'L'");
+                    }
                     result += 50;
                     break;
                 case 'C':
                     if (previousChar == 'X') {
                         // need to remove twenty as ten was already added to result in the previous run thru the loop
                         result -= 20;
+                    }
+                    else if (previousChar == 'I') {
+                        throw new IllegalArgumentException("'I' can't come before 'C'");
                     }
                     result += 100;
                     break;
@@ -60,12 +66,18 @@ public class RomanNumeralConverter {
                         // need to remove 200 as 100 was already added to result in the previous run thru the loop
                         result -= 200;
                     }
+                    else if (previousChar == 'I') {
+                        throw new IllegalArgumentException("'I' can't come before 'D'");
+                    }
                     result += 500;
                     break;
                 case 'M':
                     if (previousChar == 'C') {
                         // need to remove 200 as 100 was already added to result in the previous run thru the loop
                         result -= 200;
+                    }
+                    else if (previousChar == 'I') {
+                        throw new IllegalArgumentException("'I' can't come before 'M'");
                     }
                     result += 1000;
                     break;
