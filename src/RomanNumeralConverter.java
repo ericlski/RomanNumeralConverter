@@ -21,6 +21,33 @@ public class RomanNumeralConverter {
     public static int r2i(String roman) throws IllegalArgumentException {
         int result = 0;
         // Conversion code
+        for (char x: roman.toCharArray()) {
+            switch (x){
+                case 'I':
+                    result += 1;
+                    break;
+                case 'V':
+                    result += 5;
+                    break;
+                case 'X':
+                    result += 10;
+                    break;
+                case 'L':
+                    result += 50;
+                    break;
+                case 'C':
+                    result += 100;
+                    break;
+                case 'D':
+                    result += 500;
+                    break;
+                case 'M':
+                    result += 1000;
+                    break;
+                default:
+                    throw new IllegalArgumentException("Undefined Roman Numeral Given");
+            }
+        }
         return result;
     }
 
