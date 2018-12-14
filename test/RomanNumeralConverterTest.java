@@ -24,4 +24,16 @@ class RomanNumeralConverterTest {
         result = converter.r2i("M");
         assertEquals(1000, result);
     }
+
+    @Test
+    public void subtractTest() {
+        int result;
+        result = converter.r2i("IV");
+        assertEquals(4, result);
+        result = converter.r2i("IX");
+        assertEquals(9, result);
+        result = converter.r2i("XLIX");
+        assertEquals(49, result);
+
+    }
 }
