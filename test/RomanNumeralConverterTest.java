@@ -46,22 +46,31 @@ class RomanNumeralConverterTest {
 
     @Test
     public void trickyTest() {
+        Exception exception = null;
         try {
             converter.r2i("testyboi");
         } catch (Exception e) {
-            assertTrue(e instanceof IllegalArgumentException);
+            exception = e;
         }
-        // more difficult
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
         try {
             converter.r2i("XVIImesswiththetestyboi");
         } catch (Exception e) {
-            assertTrue(e instanceof IllegalArgumentException);
+            exception = e;
         }
-        // lowercase numeral
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
         try {
             converter.r2i("xvii");
         } catch (Exception e) {
-            assertTrue(e instanceof IllegalArgumentException);
+            exception = e;
         }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
     }
 }
