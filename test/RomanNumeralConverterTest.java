@@ -70,6 +70,15 @@ class RomanNumeralConverterTest {
         }
         assertNotNull(exception);
         assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("XV II");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
     }
 
     @Test
@@ -150,6 +159,36 @@ class RomanNumeralConverterTest {
         exception = null;
         try {
             RomanNumeralConverter.r2i("CCCCCCCCCC");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+    }
+
+    @Test
+    void testAscendingOrder() {
+        Exception exception = null;
+        try {
+            RomanNumeralConverter.r2i("IIIVXXX");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("IICDM");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("ICDM");
         } catch (Exception e) {
             exception = e;
         }

@@ -45,6 +45,9 @@ public class RomanNumeralConverter {
                     }
                     vFlag = true;
                     if (previousChar == 'I') {
+                        if (numI > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove two as one was already added to result in the previous run thru the loop
                         result -= 2;
                     }
@@ -53,11 +56,14 @@ public class RomanNumeralConverter {
 
                 case 'X':
                     if (previousChar == 'I') {
+                        if (numI > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove two as one was already added to result in the previous run thru the loop
                         result -= 2;
                     }
                     if (numX == 9) {
-                        throw new IllegalArgumentException("Can't have more than 10 I's");
+                        throw new IllegalArgumentException("Can't have more than 10 X's");
                     }
                     result += 10;
                     numX++;
@@ -70,6 +76,9 @@ public class RomanNumeralConverter {
                     }
                     lFlag = true;
                     if (previousChar == 'X') {
+                        if (numX > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove twenty as ten was already added to result in the previous run thru the loop
                         result -= 20;
                     }
@@ -81,9 +90,12 @@ public class RomanNumeralConverter {
 
                 case 'C':
                     if (numC == 9) {
-                        throw new IllegalArgumentException("Can't have more than 10 I's");
+                        throw new IllegalArgumentException("Can't have more than 10 C's");
                     }
                     if (previousChar == 'X') {
+                        if (numX > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove twenty as ten was already added to result in the previous run thru the loop
                         result -= 20;
                     }
@@ -101,6 +113,9 @@ public class RomanNumeralConverter {
                     }
                     dFlag = true;
                     if (previousChar == 'C') {
+                        if (numC > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove 200 as 100 was already added to result in the previous run thru the loop
                         result -= 200;
                     }
@@ -112,6 +127,9 @@ public class RomanNumeralConverter {
 
                 case 'M':
                     if (previousChar == 'C') {
+                        if (numC > 1) {
+                            throw new IllegalArgumentException("Can't be in ascending order");
+                        }
                         // need to remove 200 as 100 was already added to result in the previous run thru the loop
                         result -= 200;
                     }
