@@ -24,12 +24,20 @@ public class RomanNumeralConverter {
         boolean vFlag = false;
         boolean lFlag = false;
         boolean dFlag = false;
+        int numI = 0;
+        int numX = 0;
+        int numC = 0;
         // Conversion code
         for (char x: roman.toCharArray()) {
             switch (x){
                 case 'I':
+                    if (numI == 9) {
+                        throw new IllegalArgumentException("Can't have more than 10 I's");
+                    }
                     result += 1;
+                    numI++;
                     break;
+
                 case 'V':
                     if (vFlag)
                     {
@@ -42,13 +50,19 @@ public class RomanNumeralConverter {
                     }
                     result += 5;
                     break;
+
                 case 'X':
                     if (previousChar == 'I') {
                         // need to remove two as one was already added to result in the previous run thru the loop
                         result -= 2;
                     }
+                    if (numX == 9) {
+                        throw new IllegalArgumentException("Can't have more than 10 I's");
+                    }
                     result += 10;
+                    numX++;
                     break;
+
                 case 'L':
                     if (lFlag)
                     {
@@ -64,7 +78,11 @@ public class RomanNumeralConverter {
                     }
                     result += 50;
                     break;
+
                 case 'C':
+                    if (numC == 9) {
+                        throw new IllegalArgumentException("Can't have more than 10 I's");
+                    }
                     if (previousChar == 'X') {
                         // need to remove twenty as ten was already added to result in the previous run thru the loop
                         result -= 20;
@@ -73,7 +91,9 @@ public class RomanNumeralConverter {
                         throw new IllegalArgumentException("'I' can't come before 'C'");
                     }
                     result += 100;
+                    numC++;
                     break;
+
                 case 'D':
                     if (dFlag)
                     {
@@ -89,6 +109,7 @@ public class RomanNumeralConverter {
                     }
                     result += 500;
                     break;
+
                 case 'M':
                     if (previousChar == 'C') {
                         // need to remove 200 as 100 was already added to result in the previous run thru the loop
@@ -99,6 +120,7 @@ public class RomanNumeralConverter {
                     }
                     result += 1000;
                     break;
+
                 default:
                     throw new IllegalArgumentException("Undefined Roman Numeral Given");
             }

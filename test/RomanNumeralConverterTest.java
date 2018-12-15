@@ -13,7 +13,7 @@ class RomanNumeralConverterTest {
         assertEquals(5, result);
         result = RomanNumeralConverter.r2i("X");
         assertEquals(10, result);
-        result =  RomanNumeralConverter.r2i("L");
+        result = RomanNumeralConverter.r2i("L");
         assertEquals(50, result);
         result = RomanNumeralConverter.r2i("C");
         assertEquals(100, result);
@@ -126,4 +126,35 @@ class RomanNumeralConverterTest {
         assertNotNull(exception);
         assertTrue(exception instanceof IllegalArgumentException);
     }
+
+    @Test
+    void tooManyLettersInARow() {
+        Exception exception = null;
+        try {
+            RomanNumeralConverter.r2i("IIIIIIIIII");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("XXXXXXXXXX");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+
+        exception = null;
+        try {
+            RomanNumeralConverter.r2i("CCCCCCCCCC");
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+        assertTrue(exception instanceof IllegalArgumentException);
+    }
+
 }
